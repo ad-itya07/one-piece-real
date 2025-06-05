@@ -4,6 +4,8 @@ const adminAuth = (req, res, next) => {
     req.headers["authorization"]?.replace("Bearer ", "");
   const expectedAdminKey = process.env.ADMIN_SECRET_KEY || "default_admin_key";
 
+  console.log("Admin Key", adminKey, "expected admin key", expectedAdminKey);
+  
   if (!adminKey) {
     return res.status(401).json({
       status: "error",
